@@ -5,11 +5,21 @@
         <div class="row">
           <div class="form-group w-50">
             <label for="title">Titre</label>
-            <input type="text" class="form-control" id="inputTitle" />
+            <input
+              v-model="title"
+              type="text"
+              class="form-control"
+              id="inputTitle"
+            />
           </div>
           <div class="form-group w-50">
             <label for="realisateur">Réalisateur</label>
-            <input type="string" class="form-control" id="inputRealisateur" />
+            <input
+              v-model="director"
+              type="string"
+              class="form-control"
+              id="inputRealisateur"
+            />
           </div>
         </div>
         <div>
@@ -21,12 +31,18 @@
               id="inputYear"
               min="1000"
               max="9999"
+              v-model="year"
             />
           </div>
 
           <div class="form-group">
             <label for="imgUrl">Affiche</label>
-            <input type="string" class="form-control" id="inputImgUrl" />
+            <input
+              v-model="posterUrl"
+              type="string"
+              class="form-control"
+              id="inputImgUrl"
+            />
           </div>
         </div>
         <button @click="saveMovie" class="btn btn-primary my-3 col-2">
@@ -54,29 +70,31 @@ export default defineComponent({
   components: {},
   data() {
     return {
-      movie: {
-        id: '',
-        title: '',
-        year: '',
-        director: '',
-        posterUrl: '',
-      } as iMovies,
+      title: '',
+      year: '',
+      runtime: '',
+      genres: [],
+      actors: '',
+      plot: '',
+      director: '',
+      posterUrl: '',
       submitted: false,
     }
   },
   methods: {
     saveMovie() {
       let data = {
-        title: this.movie.title,
-        description: this.movie.year,
-        year: this.movie.year,
-        director: this.movie.director,
-        posterUrl: this.movie.posterUrl,
+        title: this.title,
+        year: this.year,
+        runtime: this.runtime,
+        genres: [this.genres],
+        actors: this.actors,
+        plot: this.plot,
+        director: this.director,
+        posterUrl: this.posterUrl,
       }
-
       DataService.create(data)
         .then((response: ResponseData) => {
-          this.movie.id = response.data.id
           console.log(response.data)
           this.submitted = true
         })
@@ -86,7 +104,6 @@ export default defineComponent({
     },
     newMovie() {
       this.submitted = false
-      this.movie = {} as iMovies
     },
   },
 })

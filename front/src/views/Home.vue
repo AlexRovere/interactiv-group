@@ -1,7 +1,17 @@
 <template>
   <section class="container">
-    <Search v-bind:movies="movies"></Search>
-
+    <h1>Quel film cherchez-vous ?</h1>
+    <div class="d-flex flex-column mx-auto align-items-center">
+      <input
+        v-model="search"
+        class="col-4"
+        type="search"
+        placeHolder="rechercher par titre de film"
+      />
+      <button @click="getResult" class="col-1 my-3 btn-primary btn">
+        Rechercher
+      </button>
+    </div>
     <table class="table table-dark">
       <thead>
         <tr>
@@ -24,7 +34,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="movie in movies" :key="movie.title">
+        <tr v-for="movie in filteredMovie" :key="movie.title">
           <th scope="row">{{ movie.title }}</th>
           <td>{{ movie.year }}</td>
           <td>{{ movie.director }}</td>
@@ -53,27 +63,27 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import Search from '@/components/Search.vue'
 import DataService from '@/services/DataService'
 import iMovies from '@/types/Movies'
 import ResponseData from '@/types/ResponseData'
 
 export default defineComponent({
   name: 'Home',
-  components: {
-    Search,
-  },
+  components: {},
   data() {
     return {
       movies: [] as iMovies[],
+      filteredMovie: [] as iMovies[],
       title: '',
+      search: '',
     }
   },
   methods: {
     getAllMovies() {
       DataService.getAll()
         .then((response: ResponseData) => {
-          this.movies = response.data
+          this.movies = response.data as iMovies[]
+          this.filteredMovie = this.movies
         })
         .catch((e: Error) => {
           console.log(e)
@@ -82,6 +92,20 @@ export default defineComponent({
   },
   mounted() {
     this.getAllMovies()
+  },
+  watch: {
+    search(value, oldValue) {
+      let resultMovies = this.movies
+
+      let searchString = value.trim().toLowerCase()
+      resultMovies = resultMovies.filter(function (item: any) {
+        if (item.title.toLowerCase().indexOf(searchString) !== -1) {
+          return item
+        }
+      })
+      console.log(resultMovies)
+      this.filteredMovie = resultMovies
+    },
   },
 })
 </script>
