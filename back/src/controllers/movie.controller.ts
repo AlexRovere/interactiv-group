@@ -1,6 +1,4 @@
-import { iMovie } from "../models/movie.model"
-
-const { Movie } = require('../models/movie.model')
+import { iMovie, Movie } from '../models/movie.model'
 const { logError } = require('../utils/index')
 
 const fetchMovies = (socket: any) => {
@@ -39,4 +37,4 @@ const searchMovie = (socket: any, data: string) => {
     .catch(logError)
 }
 
-export {fetchMovies, updateMovie, deleteMovie, addMovie, searchMovie};
+export { fetchMovies, updateMovie, deleteMovie, addMovie, searchMovie }

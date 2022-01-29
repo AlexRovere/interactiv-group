@@ -5,24 +5,29 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: Home,
   },
   {
     path: '/add',
     name: 'add',
 
-    component: () => import('../views/Add.vue')
+    component: () => import('../views/Add.vue'),
   },
   {
-    path: '/update',
+    path: '/update/:id',
     name: 'update',
-    component: () => import('../views/Update.vue')
+    component: () => import('../views/Update.vue'),
+  },
+  {
+    path: '/delete/:id',
+    name: 'delete',
+    redirect: '/',
   },
 ]
 
 const router = createRouter({
   history: createWebHashHistory(),
-  routes
+  routes,
 })
 
 export default router

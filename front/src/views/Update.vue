@@ -30,9 +30,11 @@
       </div>
       <div class="d-flex col-4 justify-content-around">
         <div class="col-6">
-          <button type="submit" class="btn btn-danger my-3">
-            Supprimer
-          </button>
+          <router-link :to="{ name: 'delete', params: { id: 1 } }">
+            <button type="submit" class="btn btn-danger my-3">
+              Supprimer
+            </button>
+          </router-link>
         </div>
         <div class="col-6">
           <button type="submit" class="btn btn-primary my-3 col-10">
