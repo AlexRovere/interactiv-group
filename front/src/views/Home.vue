@@ -12,29 +12,42 @@
         Rechercher
       </button>
     </div>
+    <div v-if="(filteredMovie.length === 0)">
+      <h2>Aucun film trouvé</h2>
+    </div>
     <table class="table table-dark">
       <thead>
         <tr>
-          <th scope="col">
+          <th scope="col" @click="sortTable('title')">
             Titre
             <img
               src="https://img.icons8.com/material-outlined/24/000000/generic-sorting.png"
             />
           </th>
-          <th scope="col">
+          <th class="col-1" scope="col" @click="sortTable('year')">
             Année
             <img
               src="https://img.icons8.com/material-outlined/24/000000/generic-sorting.png"
             />
           </th>
-          <th scope="col">Réalisateur</th>
-          <th scope="col">Affiche</th>
+          <th scope="col" @click="sortTable('director')">
+            Réalisateur
+            <img
+              src="https://img.icons8.com/material-outlined/24/000000/generic-sorting.png"
+            />
+          </th>
+          <th scope="col" @click="sortTable('posterUrl')">
+            Affiche
+            <img
+              src="https://img.icons8.com/material-outlined/24/000000/generic-sorting.png"
+            />
+          </th>
           <th scope="col">Modifier</th>
           <th scope="col">Supprimer</th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="movie in filteredMovie" :key="movie.title">
+        <tr v-for="movie in filteredMovie" :key="movie.id">
           <th scope="row">{{ movie.title }}</th>
           <td>{{ movie.year }}</td>
           <td>{{ movie.director }}</td>
@@ -76,6 +89,8 @@ export default defineComponent({
       filteredMovie: [] as iMovies[],
       title: '',
       search: '',
+      ascending: false,
+      sortColumn: '',
     }
   },
   methods: {
@@ -93,18 +108,39 @@ export default defineComponent({
       DataService.delete(id)
         .then((response: ResponseData) => {
           console.log(response.data)
+          const index = this.movies.findIndex((movie) => movie.id === id)
+          this.movies.splice(index, 1)
         })
         .catch((e: Error) => {
           console.log(e)
         })
-      this.getAllMovies()
+    },
+    sortTable(col: string) {
+      if (this.sortColumn === col) {
+        this.ascending = !this.ascending
+      } else {
+        this.ascending = true
+        this.sortColumn = col
+      }
+
+      var ascending = this.ascending
+
+      this.filteredMovie.sort(function (a, b) {
+        if (a[col] > b[col]) {
+          return ascending ? 1 : -1
+        } else if (a[col] < b[col]) {
+          return ascending ? -1 : 1
+        }
+        return 0
+      })
     },
   },
   mounted() {
     this.getAllMovies()
   },
+
   watch: {
-    search(value, oldValue) {
+    search(value) {
       let resultMovies = this.movies
 
       let searchString = value.trim().toLowerCase()
@@ -115,6 +151,16 @@ export default defineComponent({
       })
       console.log(resultMovies)
       this.filteredMovie = resultMovies
+    },
+    // recupère tous les films sur un changement de route
+    $route: 'getAllMovies',
+  },
+  computed: {
+    columns() {
+      if (this.filteredMovie.length == 0) {
+        return []
+      }
+      return Object.keys(this.filteredMovie)
     },
   },
 })

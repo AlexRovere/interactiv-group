@@ -19,9 +19,10 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('../views/Update.vue'),
   },
   {
-    path: '/delete/:id',
-    name: 'delete',
-    redirect: '/',
+    path: '/Cv',
+    name: 'Cv',
+
+    component: () => import('../views/Cv.vue'),
   },
 ]
 

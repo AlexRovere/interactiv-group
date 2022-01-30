@@ -26,15 +26,11 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 TODO : 
 
-front : 
-tri par nom asc/desc
-tri par année asc/desc
 
 extra : 
 
 pagination
 alerte supression
-recharger les films après la supression
 problème cache obligé de cliquer 2 fois pour update
 
 delete : 
@@ -53,3 +49,9 @@ hydrater le form ok
 envoyer les valeurs ok 
 recup les valeurs en back ok
 modifier le json ok
+
+front : 
+tri par nom asc/desc ok
+tri par année asc/desc ok
+
+recharger les films après la supression ok

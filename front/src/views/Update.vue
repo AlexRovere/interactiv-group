@@ -46,14 +46,12 @@
       </div>
       <div class="d-flex col-4 justify-content-around">
         <div class="col-6">
-          <router-link :to="{ name: 'delete', params: { id: 1 } }">
-            <button
-              @click="deleteMovie(this.$route.params.id)"
-              class="btn btn-danger my-3"
-            >
-              Supprimer
-            </button>
-          </router-link>
+          <button
+            @click="deleteMovie(this.$route.params.id)"
+            class="btn btn-danger my-3"
+          >
+            Supprimer
+          </button>
         </div>
         <div class="col-6">
           <button
@@ -65,6 +63,15 @@
         </div>
       </div>
     </form>
+    <div v-if="submitted">
+      <h4 v-if="updated">Votre film a bien été modifié !</h4>
+      <h4 v-if="deleted">Votre film a bien été supprimé !</h4>
+      <router-link to="/">
+        <button class="btn btn-primary">
+          Retour à l'accueil
+        </button>
+      </router-link>
+    </div>
   </section>
 </template>
 
@@ -83,6 +90,9 @@ export default defineComponent({
       year: 1990,
       director: '',
       posterUrl: '',
+      updated: false,
+      deleted: false,
+      submitted: false,
     }
   },
   methods: {
@@ -102,6 +112,12 @@ export default defineComponent({
       DataService.delete(id)
         .then((response: ResponseData) => {
           console.log(response.data)
+          this.deleted = true
+          this.updated = false
+          this.submitted = true
+          setTimeout(() => {
+            this.$router.push({ name: 'Home' })
+          }, 2000)
         })
         .catch((e: Error) => {
           console.log(e)
@@ -117,6 +133,9 @@ export default defineComponent({
       DataService.update(id, data)
         .then((response: ResponseData) => {
           console.log(response.data)
+          this.updated = true
+          this.deleted = false
+          this.submitted = true
         })
         .catch((e: Error) => {
           console.log(e)

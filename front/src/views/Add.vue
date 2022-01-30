@@ -52,7 +52,7 @@
     </div>
     <div v-else>
       <h4>Votre film a bien été enregistré !</h4>
-      <button class="btn btn-success" @click="newMovie">
+      <button class="btn btn-primary" @click="newMovie">
         Ajouter un nouveau film ?
       </button>
     </div>
