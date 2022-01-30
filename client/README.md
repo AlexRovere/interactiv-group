@@ -1,11 +1,11 @@
 # front
 
-## Project setup
+## Installation des dépendances
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### Lancer le serveur
 ```
 npm run serve
 ```
