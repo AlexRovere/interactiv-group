@@ -12,12 +12,12 @@ Installe les dépendances
 
 Lance le serveur en localhost
  
-# Coté serveur Node.js 
+# Coté serveur Node.js 14.16
 
 ``npm install ``
 
 Installe les dépendances
 
-`` nodemon app.js ``
+``npx nodemon app.js ``
 
 Lance le serveur en localhost
