@@ -72,10 +72,6 @@ export default defineComponent({
     return {
       title: '',
       year: '',
-      runtime: '',
-      genres: [],
-      actors: '',
-      plot: '',
       director: '',
       posterUrl: '',
       submitted: false,
@@ -86,10 +82,6 @@ export default defineComponent({
       let data = {
         title: this.title,
         year: this.year,
-        runtime: this.runtime,
-        genres: [this.genres],
-        actors: this.actors,
-        plot: this.plot,
         director: this.director,
         posterUrl: this.posterUrl,
       }

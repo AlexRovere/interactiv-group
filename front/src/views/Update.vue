@@ -4,17 +4,28 @@
       <div class="row">
         <div class="form-group w-50">
           <label for="title">Titre</label>
-          <input type="text" class="form-control" id="inputTitle" />
+          <input
+            v-model="title"
+            type="text"
+            class="form-control"
+            id="inputTitle"
+          />
         </div>
         <div class="form-group w-50">
           <label for="realisateur">Réalisateur</label>
-          <input type="string" class="form-control" id="inputRealisateur" />
+          <input
+            v-model="director"
+            type="string"
+            class="form-control"
+            id="inputRealisateur"
+          />
         </div>
       </div>
       <div>
         <div class="form-group">
           <label for="year">Année de sortie</label>
           <input
+            v-model="year"
             type="number"
             class="form-control"
             id="inputYear"
@@ -25,19 +36,30 @@
 
         <div class="form-group">
           <label for="imgUrl">Affiche</label>
-          <input type="string" class="form-control" id="inputImgUrl" />
+          <input
+            v-model="posterUrl"
+            type="string"
+            class="form-control"
+            id="inputImgUrl"
+          />
         </div>
       </div>
       <div class="d-flex col-4 justify-content-around">
         <div class="col-6">
           <router-link :to="{ name: 'delete', params: { id: 1 } }">
-            <button type="submit" class="btn btn-danger my-3">
+            <button
+              @click="deleteMovie(this.$route.params.id)"
+              class="btn btn-danger my-3"
+            >
               Supprimer
             </button>
           </router-link>
         </div>
         <div class="col-6">
-          <button type="submit" class="btn btn-primary my-3 col-10">
+          <button
+            @click="updateMovie(this.$route.params.id)"
+            class="btn btn-primary my-3 col-10"
+          >
             Modifier
           </button>
         </div>
@@ -48,9 +70,61 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+import DataService from '@/services/DataService'
+import iMovies from '@/types/Movies'
+import ResponseData from '@/types/ResponseData'
 
 export default defineComponent({
   name: 'update',
   components: {},
+  data() {
+    return {
+      title: '',
+      year: 1990,
+      director: '',
+      posterUrl: '',
+    }
+  },
+  methods: {
+    getMovie(id: any) {
+      DataService.get(id)
+        .then((response: ResponseData) => {
+          this.title = response.data.title
+          this.year = response.data.year
+          this.director = response.data.director
+          this.posterUrl = response.data.posterUrl
+        })
+        .catch((e: Error) => {
+          console.log(e)
+        })
+    },
+    deleteMovie(id: number) {
+      DataService.delete(id)
+        .then((response: ResponseData) => {
+          console.log(response.data)
+        })
+        .catch((e: Error) => {
+          console.log(e)
+        })
+    },
+    updateMovie(id: number) {
+      let data = {
+        title: this.title,
+        year: this.year,
+        director: this.director,
+        posterUrl: this.posterUrl,
+      }
+      DataService.update(id, data)
+        .then((response: ResponseData) => {
+          console.log(response.data)
+        })
+        .catch((e: Error) => {
+          console.log(e)
+        })
+    },
+  },
+  mounted() {
+    this.getMovie(this.$route.params.id)
+  },
 })
 </script>

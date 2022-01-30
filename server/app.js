@@ -117,6 +117,7 @@ app.put('/api/movies/:movieID', (req, res) => {
     director: req.body.director,
     posterUrl: req.body.posterUrl,
   }
+  console.log(updatedMovie)
   movies[index] = updatedMovie
   fs.writeFile('movies.json', JSON.stringify(movies, null, 4), (err) => {
     if (err) {

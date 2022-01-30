@@ -1,31 +1,9 @@
 [
     {
-        "id": 1,
-        "title": "Beetlejuice",
-        "year": "1988",
-        "runtime": "92",
-        "genres": [
-            "Comedy",
-            "Fantasy"
-        ],
-        "director": "Tim Burton",
-        "actors": "Alec Baldwin, Geena Davis, Annie McEnroe, Maurice Page",
-        "plot": "A couple of recently deceased ghosts contract the services of a \"bio-exorcist\" in order to remove the obnoxious new owners of their house.",
-        "posterUrl": "https://images-na.ssl-images-amazon.com/images/M/MV5BMTUwODE3MDE0MV5BMl5BanBnXkFtZTgwNTk1MjI4MzE@._V1_SX300.jpg"
-    },
-    {
         "id": 2,
         "title": "The Cotton Club",
         "year": "1984",
-        "runtime": "127",
-        "genres": [
-            "Crime",
-            "Drama",
-            "Music"
-        ],
         "director": "Francis Ford Coppola",
-        "actors": "Richard Gere, Gregory Hines, Diane Lane, Lonette McKee",
-        "plot": "The Cotton Club was a famous night club in Harlem. The story follows the people that visited the club, those that ran it, and is peppered with the Jazz music that made it so famous.",
         "posterUrl": "https://images-na.ssl-images-amazon.com/images/M/MV5BMTU5ODAyNzA4OV5BMl5BanBnXkFtZTcwNzYwNTIzNA@@._V1_SX300.jpg"
     },
     {
@@ -58,17 +36,9 @@
     },
     {
         "id": 5,
-        "title": "Valkyrie",
+        "title": "Valkyrie2",
         "year": "2008",
-        "runtime": "121",
-        "genres": [
-            "Drama",
-            "History",
-            "Thriller"
-        ],
-        "director": "Bryan Singer",
-        "actors": "Tom Cruise, Kenneth Branagh, Bill Nighy, Tom Wilkinson",
-        "plot": "A dramatization of the 20 July assassination and political coup plot by desperate renegade German Army officers against Hitler during World War II.",
+        "director": "Bryan",
         "posterUrl": "http://ia.media-imdb.com/images/M/MV5BMTg3Njc2ODEyN15BMl5BanBnXkFtZTcwNTAwMzc3NA@@._V1_SX300.jpg"
     },
     {
@@ -88,16 +58,9 @@
     },
     {
         "id": 7,
-        "title": "City of God",
+        "title": "",
         "year": "2002",
-        "runtime": "130",
-        "genres": [
-            "Crime",
-            "Drama"
-        ],
         "director": "Fernando Meirelles, Kátia Lund",
-        "actors": "Alexandre Rodrigues, Leandro Firmino, Phellipe Haagensen, Douglas Silva",
-        "plot": "Two boys growing up in a violent neighborhood of Rio de Janeiro take different paths: one becomes a photographer, the other a drug dealer.",
         "posterUrl": "https://images-na.ssl-images-amazon.com/images/M/MV5BMjA4ODQ3ODkzNV5BMl5BanBnXkFtZTYwOTc4NDI3._V1_SX300.jpg"
     },
     {
@@ -2051,100 +2014,5 @@
         "actors": "Xolani Mali, Don Cheadle, Desmond Dube, Hakeem Kae-Kazim",
         "plot": "Paul Rusesabagina was a hotel manager who housed over a thousand Tutsi refugees during their struggle against the Hutu militia in Rwanda.",
         "posterUrl": "https://images-na.ssl-images-amazon.com/images/M/MV5BMTI2MzQyNTc1M15BMl5BanBnXkFtZTYwMjExNjc3._V1_SX300.jpg"
-    },
-    {
-        "id": 142,
-        "title": "The Martian",
-        "year": "2015",
-        "runtime": "144",
-        "genres": [
-            "Adventure",
-            "Drama",
-            "Sci-Fi"
-        ],
-        "director": "Ridley Scott",
-        "actors": "Matt Damon, Jessica Chastain, Kristen Wiig, Jeff Daniels",
-        "plot": "An astronaut becomes stranded on Mars after his team assume him dead, and must rely on his ingenuity to find a way to signal to Earth that he is alive.",
-        "posterUrl": "https://images-na.ssl-images-amazon.com/images/M/MV5BMTc2MTQ3MDA1Nl5BMl5BanBnXkFtZTgwODA3OTI4NjE@._V1_SX300.jpg"
-    },
-    {
-        "id": 143,
-        "title": "To Kill a Mockingbird",
-        "year": "1962",
-        "runtime": "129",
-        "genres": [
-            "Crime",
-            "Drama"
-        ],
-        "director": "Robert Mulligan",
-        "actors": "Gregory Peck, John Megna, Frank Overton, Rosemary Murphy",
-        "plot": "Atticus Finch, a lawyer in the Depression-era South, defends a black man against an undeserved rape charge, and his kids against prejudice.",
-        "posterUrl": "http://ia.media-imdb.com/images/M/MV5BMjA4MzI1NDY2Nl5BMl5BanBnXkFtZTcwMTcyODc5Mw@@._V1_SX300.jpg"
-    },
-    {
-        "id": 144,
-        "title": "The Hateful Eight",
-        "year": "2015",
-        "runtime": "187",
-        "genres": [
-            "Crime",
-            "Drama",
-            "Mystery"
-        ],
-        "director": "Quentin Tarantino",
-        "actors": "Samuel L. Jackson, Kurt Russell, Jennifer Jason Leigh, Walton Goggins",
-        "plot": "In the dead of a Wyoming winter, a bounty hunter and his prisoner find shelter in a cabin currently inhabited by a collection of nefarious characters.",
-        "posterUrl": "https://images-na.ssl-images-amazon.com/images/M/MV5BMjA1MTc1NTg5NV5BMl5BanBnXkFtZTgwOTM2MDEzNzE@._V1_SX300.jpg"
-    },
-    {
-        "id": 149,
-        "title": "A Separation",
-        "year": "2011",
-        "runtime": "123",
-        "genres": [
-            "Drama",
-            "Mystery"
-        ],
-        "director": "Asghar Farhadi",
-        "actors": "Peyman Moaadi, Leila Hatami, Sareh Bayat, Shahab Hosseini",
-        "plot": "A married couple are faced with a difficult decision - to improve the life of their child by moving to another country or to stay in Iran and look after a deteriorating parent who has Alzheimer's disease.",
-        "posterUrl": "http://ia.media-imdb.com/images/M/MV5BMTYzMzU4NDUwOF5BMl5BanBnXkFtZTcwMTM5MjA5Ng@@._V1_SX300.jpg"
-    },
-    {
-        "id": 146,
-        "title": "The Big Short",
-        "year": "2015",
-        "runtime": "130",
-        "genres": [
-            "Biography",
-            "Comedy",
-            "Drama"
-        ],
-        "director": "Adam McKay",
-        "actors": "Ryan Gosling, Rudy Eisenzopf, Casey Groves, Charlie Talbert",
-        "plot": "Four denizens in the world of high-finance predict the credit and housing bubble collapse of the mid-2000s, and decide to take on the big banks for their greed and lack of foresight.",
-        "posterUrl": "https://images-na.ssl-images-amazon.com/images/M/MV5BNDc4MThhN2EtZjMzNC00ZDJmLThiZTgtNThlY2UxZWMzNjdkXkEyXkFqcGdeQXVyNDk3NzU2MTQ@._V1_SX300.jpg"
-    },
-    {
-        "id": 200,
-        "title": "The Big Short",
-        "year": "2015",
-        "runtime": "130",
-        "genres": [
-            "Biography",
-            "Comedy",
-            "Drama"
-        ],
-        "director": "Adam McKay",
-        "actors": "Ryan Gosling, Rudy Eisenzopf, Casey Groves, Charlie Talbert",
-        "plot": "Four denizens in the world of high-finance predict the credit and housing bubble collapse of the mid-2000s, and decide to take on the big banks for their greed and lack of foresight.",
-        "posterUrl": "https://images-na.ssl-images-amazon.com/images/M/MV5BNDc4MThhN2EtZjMzNC00ZDJmLThiZTgtNThlY2UxZWMzNjdkXkEyXkFqcGdeQXVyNDk3NzU2MTQ@._V1_SX300.jpg"
-    },
-    {
-        "id": 201,
-        "title": "az",
-        "year": 1653,
-        "director": "az",
-        "posterUrl": "aze"
     }
 ]

@@ -51,9 +51,9 @@
             </router-link>
           </td>
           <td>
-            <router-link :to="{ name: 'delete', params: { id: movie.id } }">
-              <button class="btn btn-danger">Supprimer</button>
-            </router-link>
+            <button @click="deleteMovie(movie.id)" class="btn btn-danger">
+              Supprimer
+            </button>
           </td>
         </tr>
       </tbody>
@@ -88,6 +88,16 @@ export default defineComponent({
         .catch((e: Error) => {
           console.log(e)
         })
+    },
+    deleteMovie(id: number) {
+      DataService.delete(id)
+        .then((response: ResponseData) => {
+          console.log(response.data)
+        })
+        .catch((e: Error) => {
+          console.log(e)
+        })
+      this.getAllMovies()
     },
   },
   mounted() {
