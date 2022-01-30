@@ -1,9 +1,11 @@
 <template>
-  <router-link to="/">
-    <img alt="Vue logo" src="@/assets/logo.png" />
-  </router-link>
-  <Nav></Nav>
-  <router-view />
+  <div class="wrapper">
+    <router-link to="/">
+      <img alt="Vue logo" class="logo" src="@/assets/logo.png" />
+    </router-link>
+    <Nav></Nav>
+    <router-view />
+  </div>
 </template>
 
 <script lang="ts">
@@ -24,6 +26,9 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
 }
+.logo {
+  width: 5%;
+}
 
 #nav {
   padding: 30px;
@@ -36,5 +41,8 @@ export default {
       color: #42b983;
     }
   }
+}
+.wrapper {
+  max-width: 90vw;
 }
 </style>

@@ -1,9 +1,19 @@
 <template>
   <section class="container">
     <div v-if="!submitted">
-      <form class="mx-auto d-flex flex-column align-items-center">
+      <form
+        @submit="checkForm"
+        class="mx-auto d-flex flex-column align-items-center"
+      >
+        <p v-if="errors.length" class="alert alert-danger">
+          <b>Veuillez compléter ces champs :</b>
+          <ul>
+            <li v-for="error in errors" :key="error.id">{{ error }}</li>
+          </ul>
+          </p>
         <div class="row">
           <div class="form-group w-50">
+        
             <label for="title">Titre</label>
             <input
               v-model="title"
@@ -45,7 +55,7 @@
             />
           </div>
         </div>
-        <button @click="saveMovie" class="btn btn-primary my-3 col-2">
+        <button type="submit" class="btn btn-primary my-3 col-2">
           Ajouter
         </button>
       </form>
@@ -75,6 +85,7 @@ export default defineComponent({
       director: '',
       posterUrl: '',
       submitted: false,
+      errors: [],
     }
   },
   methods: {
@@ -93,6 +104,28 @@ export default defineComponent({
         .catch((e: Error) => {
           console.log(e)
         })
+    },
+    checkForm: function (e) {
+      this.errors = []
+
+      if (!this.title) {
+        this.errors.push('Titre requis')
+      }
+      if (!this.year) {
+        this.errors.push('Année requise')
+      }
+      if (!this.director) {
+        this.errors.push('Réalisateur requis')
+      }
+      if (!this.posterUrl) {
+        this.errors.push('Affiche requise')
+      }
+
+      if (!this.errors.length) {
+        this.saveMovie()
+      }
+
+      e.preventDefault()
     },
     newMovie() {
       this.submitted = false

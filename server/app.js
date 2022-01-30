@@ -8,6 +8,7 @@ app.listen(5000, () => {
   console.log('server is listening on port 5000')
 })
 
+// Récupère les infos utilent pour notre affichage
 const iMovies = movies.map((movies) => {
   return {
     id: movies.id,
@@ -18,25 +19,12 @@ const iMovies = movies.map((movies) => {
   }
 })
 
-// let mappedMovies = movies.map((movies) => {
-//   return {
-//     id: movies.id,
-//     title: movies.title,
-//     year: movies.year,
-//     runtime: movies.runtime,
-//     genres: [],
-//     director: movies.director,
-//     actors: movies.actors,
-//     plot: movies.plot,
-//     posterUrl: movies.posterUrl,
-//   }
-// })
 app.use(express.json())
 
 var corsOptions = {
   // origin: 'http://localhost:8080',
   origin: '*',
-  optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+  optionsSuccessStatus: 200,
 }
 
 app.use(function (req, res, next) {
@@ -125,7 +113,7 @@ app.put('/api/movies/:movieID', (req, res) => {
       console.error(err)
       return
     }
-    console.log('Le fichier a été crée')
+    console.log('Le fichier a été modifié')
   })
   res.status(200).json('Le film a été modifié')
 })
@@ -143,7 +131,7 @@ app.delete('/api/movies/:moviesID', (req, res) => {
       console.error(err)
       return
     }
-    console.log('Le fichier a été crée')
+    console.log('Le fichier a été supprimé')
   })
   res.status(200).json('Le film a été supprimé')
 })

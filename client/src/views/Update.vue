@@ -1,6 +1,15 @@
 <template>
   <section class="container">
-    <form class="mx-auto d-flex flex-column align-items-center">
+    <form
+      @submit="checkForm"
+      class="mx-auto d-flex flex-column align-items-center"
+    >
+     <p v-if="errors.length" class="alert alert-danger">
+          <b>Veuillez compléter ces champs :</b>
+          <ul>
+            <li v-for="error in errors" :key="error.id">{{ error }}</li>
+          </ul>
+          </p>
       <div class="row">
         <div class="form-group w-50">
           <label for="title">Titre</label>
@@ -54,10 +63,7 @@
           </button>
         </div>
         <div class="col-6">
-          <button
-            @click="updateMovie(this.$route.params.id)"
-            class="btn btn-primary my-3 col-10"
-          >
+          <button type="submit" class="btn btn-primary my-3 col-10">
             Modifier
           </button>
         </div>
@@ -65,7 +71,7 @@
     </form>
     <div v-if="submitted">
       <h4 v-if="updated">Votre film a bien été modifié !</h4>
-      <h4 v-if="deleted">Votre film a bien été supprimé !</h4>
+      <h4 v-if="deleted">Votre film a bien été supprimé, redirection vers la page d'accueil automatique dans 2 secondes !</h4>
       <router-link to="/">
         <button class="btn btn-primary">
           Retour à l'accueil
@@ -93,6 +99,7 @@ export default defineComponent({
       updated: false,
       deleted: false,
       submitted: false,
+      errors: [],
     }
   },
   methods: {
@@ -140,6 +147,28 @@ export default defineComponent({
         .catch((e: Error) => {
           console.log(e)
         })
+    },
+    checkForm: function (e) {
+      this.errors = []
+
+      if (!this.title) {
+        this.errors.push('Titre requis')
+      }
+      if (!this.year) {
+        this.errors.push('Année requise')
+      }
+      if (!this.director) {
+        this.errors.push('Réalisateur requis')
+      }
+      if (!this.posterUrl) {
+        this.errors.push('Affiche requise')
+      }
+
+      if (!this.errors.length) {
+        this.updateMovie(this.$route.params.id)
+      }
+
+      e.preventDefault()
     },
   },
   mounted() {

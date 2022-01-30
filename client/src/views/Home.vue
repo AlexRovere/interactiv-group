@@ -18,7 +18,7 @@
     <table class="table table-dark">
       <thead>
         <tr>
-          <th scope="col" @click="sortTable('title')">
+          <th scope="col" class="col-3" @click="sortTable('title')">
             Titre
             <img
               src="https://img.icons8.com/material-outlined/24/000000/generic-sorting.png"
@@ -30,7 +30,7 @@
               src="https://img.icons8.com/material-outlined/24/000000/generic-sorting.png"
             />
           </th>
-          <th scope="col" @click="sortTable('director')">
+          <th scope="col" class="col-3" @click="sortTable('director')">
             Réalisateur
             <img
               src="https://img.icons8.com/material-outlined/24/000000/generic-sorting.png"
@@ -42,18 +42,18 @@
               src="https://img.icons8.com/material-outlined/24/000000/generic-sorting.png"
             />
           </th>
-          <th scope="col">Modifier</th>
-          <th scope="col">Supprimer</th>
+          <th scope="col" class="col-1">Modifier</th>
+          <th scope="col" class="col-1">Supprimer</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="movie in filteredMovie" :key="movie.id">
-          <th scope="row">{{ movie.title }}</th>
+          <td align="center" scope="row">{{ movie.title }}</td>
           <td>{{ movie.year }}</td>
           <td>{{ movie.director }}</td>
           <td>
             <img
-              class="img-thumbnail w-25"
+              class="img-thumbnail img-movies"
               :src="movie.posterUrl"
               alt="affiche du film"
             />
@@ -110,6 +110,7 @@ export default defineComponent({
           console.log(response.data)
           const index = this.movies.findIndex((movie) => movie.id === id)
           this.movies.splice(index, 1)
+          this.filteredMovie = this.movies
         })
         .catch((e: Error) => {
           console.log(e)
@@ -135,11 +136,11 @@ export default defineComponent({
       })
     },
   },
-  mounted() {
+  created() {
     this.getAllMovies()
   },
-
   watch: {
+    // Traque les changements de la propriété search et filtre les films
     search(value) {
       let resultMovies = this.movies
 
@@ -152,8 +153,6 @@ export default defineComponent({
       console.log(resultMovies)
       this.filteredMovie = resultMovies
     },
-    // recupère tous les films sur un changement de route
-    $route: 'getAllMovies',
   },
   computed: {
     columns() {
@@ -170,5 +169,12 @@ export default defineComponent({
 th,
 td {
   color: $secondary;
+}
+.img-movies {
+  width: 5vw;
+}
+td {
+  text-align: center;
+  vertical-align: middle;
 }
 </style>
